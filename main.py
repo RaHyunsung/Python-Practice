@@ -5,7 +5,8 @@ print()
 print("Hello! {}. This is a quiz about Python.".format(username))
 print()
 # Ask the user a question
-
+response = input("How to add a comment in Python? ")
+print()
 # Tell them the correct answer
 
 # End the quiz
