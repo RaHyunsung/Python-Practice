@@ -8,6 +8,9 @@ print()
 response = input("How to add a comment in Python? ")
 print()
 # Tell them the correct answer
-
+if response == "#":
+    print("The answer was #. You are correct!")
+else:
+    print("The answer was #. You are incorrect!")
 # End the quiz
 
