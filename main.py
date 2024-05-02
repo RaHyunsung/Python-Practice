@@ -13,4 +13,3 @@ if response == "#":
 else:
     print("The answer was #. You are incorrect!")
 # End the quiz
-
