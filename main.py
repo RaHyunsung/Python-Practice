@@ -10,6 +10,8 @@ print()
 # Tell them the correct answer
 if response == "#":
     print("The answer was #. You are correct!")
+elif response == "":
+    print("The answer was #. You skipped the question!")
 else:
     print("The answer was #. You are incorrect!")
 # End the quiz
