@@ -82,5 +82,41 @@ elif response_question7 == "":
     print("The answer was for. You skipped the question!")
 else:
     print("The answer was for. You are incorrect!")
+
+response_question8 = input("Expert question! How to loop over and over again? (only the five three letters) ")
+print()
+# Tell them the correct answer
+if response_question8 == "while":
+    print("The answer was while. You are correct!")
+    score += 1
+elif response_question8 == "":
+    print("The answer was while. You skipped the question!")
+else:
+    print("The answer was while. You are incorrect!")
+
+response_question9 = input("Expert question! How to make a multiple line string? (only three characters) ")
+print()
+# Tell them the correct answer
+if response_question9 == '"""':
+    print('The answer was """. You are correct!')
+    score += 1
+elif response_question9 == "":
+    print('The answer was """. You skipped the question!')
+else:
+    print('The answer was """. You are incorrect!')
+
+response_question10 = input("Most hardest question! How to use a module in Python? (only six first characters) ")
+print()
+# Tell them the correct answer
+if response_question10 == "import":
+    print("The answer was import. You are correct!")
+    score += 1
+elif response_question10 == "":
+    print("The answer was import. You skipped the question!")
+else:
+    print("The answer was import. You are incorrect!")
+
 # End the quiz
 print("Great job! Your score is {} out of 7!".format(score))
+if score < 9:
+    print("New Award! You are a Python expert!")
