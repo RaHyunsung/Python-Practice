@@ -117,6 +117,6 @@ else:
     print("The answer was import. You are incorrect!")
 
 # End the quiz
-print("Great job! Your score is {} out of 7!".format(score))
+print("Great job! Your score is {} out of 10!".format(score))
 if score < 9:
     print("New Award! You are a Python expert!")
