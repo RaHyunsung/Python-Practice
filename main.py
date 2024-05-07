@@ -1,3 +1,5 @@
+import random
+
 # Ask the user their name and save it
 username = input("What's your name? ")
 score = 0
@@ -116,7 +118,15 @@ elif response_question10 == "":
 else:
     print("The answer was import. You are incorrect!")
 
+number = random.randint(0, 11)
+guess = input("Gamble time! Guess the number (1~10): ")
+if int(guess) == number:
+    print("WOW you guessed it! I will double your score for you!")
+    score = score * 2
+else:
+    print("So close T^T. Try next time.")
+
 # End the quiz
-print("Great job! Your score is {} out of 10!".format(score))
+print("Great job! Your score is {}!".format(score))
 if score < 9:
     print("New Award! You are a Python expert!")
