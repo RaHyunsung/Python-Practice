@@ -1,46 +1,78 @@
 import random
 
-questions = [
-    ["How to add a comment in Python? ", "#"],
-    ["How to print 'Hello world!' in Python?\nA. print('Hello world!')\nB. input('Hello world!')\nC. print(Hello world!)\n> ", "a"],
-    ["How to get user input? (Type with brackets) ", "input()"],
-    ["What symbol suggests string? (Enter only one character) ", '"'],
-    ["What symbol do I have to use to make a variable? ", "="],
-    ["What is the file extension of the Python file? (include dot) ", ".py"],
-    ["Expert question! How to loop in Python? (only the first five letters starts with letter w) ", "while"],
-    ["Expert question! How to make a multiple line string? (only three characters) ", '"""'],
-    ["Most hardest question! How to use a module in Python? (only six first characters) ", "import"]
+QUESTION_FORMAT = "A. {}\nB. {}\nC. {}\n"
+
+QUESTIONS = [
+    ["How to add a comment in Python?", "C"],
+    ["How to print 'Hello world!' in Python? ", "B"],
+    ["How to get user input? (Type with brackets) ", "A"],
+    ["What symbol suggests string?", "A"],
+    ["What symbol do I have to use to make a variable? ", "C"],
+    ["What is the file extension of the Python file?", "B"],
+    ["Expert question! How to loop in Python?", "B"],
+    ["Expert question! How to make a multiple line string?", "A"],
+    ["Most hardest question! How to use a module in Python?", "B"]
 ]
 
-# Ask the user their name and save it
-username = input("What's your name? ")
-print()
-# Greet the user and introduce the quiz
-print("Hello! {}. This is a quiz about Python.".format(username))
-print()
+OPTIONS = [
+    ["<!--", "//", "#", "--"],
+    ['Helloworld!("print")', 'print("Hello world!")', 'print(Hello world!)'],
+    ["input()", "Console.Read()", "getpass.getpass()"],
+    ['"', "`", "-"],
+    ["->", ">>", "="],
+    [".python", ".py", ".exe"],
+    ["for", "while", "try"],
+    ['"""', "```", "---"],
+    ["export", "import", "include"]
+]
 
-while True:
-    try:
-        tries = input("How many attempts do you want at each questions? 1~4 ")
-        tries = int(tries)
-        if tries < 5:
-            break
+# ----- FUNCTIONS -----
+
+def intro():
+    # Ask the user their name and save it
+    username = input("What's your name? ")
+    print()
+
+    # Greet the user and introduce the quiz
+    print("Hello! {}. This is a quiz about Python.".format(username))
+    print()
+
+def getPassword():
+    while True:
+        password = input("What's the password? ")
+        if password == "pwd":
+            return
         else:
-            print("That's to much.")
-    except:
-        print("That's not a number.")
+            print("Nope. Try again.")
+
+def getLives():
+    while True:
+        lives = input("How many chances do you want? ")
+        try:
+            lives = int(lives)
+            if lives >= 0:
+                return lives
+            else:
+                print("Please choose a positive number.")
+        except:
+            print("That wasn't a number")
+
+intro()
+getPassword()
+tries = getLives()
 
 play = "yes"
 
 while play == "yes":
     score = 0
-    for question in questions:
-        ask = question[0]
-        answer = question[1]
+    for question in range(len(QUESTIONS)):
+        answer = QUESTIONS[question][1]
         for i in range(tries): # Repeat attempts
-            response = input(ask)
+            print(QUESTIONS[question][0])
+            print(QUESTION_FORMAT.format(*OPTIONS[question]))
+            response = input("> ")
             # Ask the user a question
-            if response.lower() == answer:
+            if response.lower() == answer.lower():
                 print("You are correct!")
                 score += 1
                 break
@@ -51,7 +83,7 @@ while play == "yes":
                 print("Incorrect. Please try again. Attmept remaining: {}/{}".format(4-i-1, tries))
                 continue
         # Tell them the correct answer
-        print("The correct answer was {}! Your current score is {} out of {}!".format(answer, score, len(questions)))
+        print("The correct answer was {}! Your current score is {} out of {}!".format(answer, score, len(QUESTIONS)))
         print()
 
     number = random.randint(0, 11)
@@ -66,7 +98,7 @@ while play == "yes":
         print("So close T^T. Try next time. The number was {}".format(number))
 
     # End the quiz
-    print("Great job! Your score is {} out of {}!".format(score, len(questions)))
+    print("Great job! Your score is {} out of {}!".format(score, len(QUESTIONS)))
     if score < 9:
         print("New Award! You are a Python expert!")
     play = input("Do you wanna play again? ").lower()
