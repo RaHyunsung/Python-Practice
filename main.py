@@ -60,6 +60,7 @@ def getLives():
 intro()
 getPassword()
 tries = getLives()
+tries = tries + 1
 
 play = "yes"
 
@@ -80,7 +81,7 @@ while play == "yes":
                 print("You skipped the question.")
                 break
             else:
-                print("Incorrect. Please try again. Attmept remaining: {}/{}".format(4-i-1, tries))
+                print("Incorrect. Please try again. Attmept remaining: {}/{}".format(tries-i-1, tries-1))
                 continue
         # Tell them the correct answer
         print("The correct answer was {}! Your current score is {} out of {}!".format(answer, score, len(QUESTIONS)))
